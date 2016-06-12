@@ -28,7 +28,7 @@ echo "Done!"
 #assertStatus
 #echo "Done!"
 
-echo -n "Creating client address 217.0.0.22 on tun ... "
+echo -n "Creating client address 217.0.0.2 on tun ... "
 ip addr add 217.0.0.2/24 dev tun0
 assertStatus
 echo "Done!"
