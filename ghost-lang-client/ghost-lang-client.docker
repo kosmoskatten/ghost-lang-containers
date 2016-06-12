@@ -1,0 +1,17 @@
+FROM ubuntu:14.04
+
+RUN apt-get update && apt-get install -y \
+    bash \
+    iproute \
+    iputils-ping \
+    libgmp3-dev \
+    iptraf
+
+RUN mkdir /home/app
+WORKDIR /home/app
+
+COPY start.sh /home/app
+COPY tun-plugs /home/app
+
+##ENTRYPOINT ["./start.sh"]
+
