@@ -23,21 +23,32 @@ ip link set tun0 up
 assertStatus
 echo "Done!"
 
-#echo -n "Routing traffic to 213.0.0.0/24 to tun0 ... "
-#ip route add 213.0.0.0/24 dev tun0
-#assertStatus
-#echo "Done!"
-
-echo -n "Creating client address 217.0.0.2 on tun ... "
-ip addr add 217.0.0.2/24 dev tun0
+echo -n "Creating (client) interface address 217.0.0.1 on tun ... "
+ip addr add 217.0.0.1/24 dev tun0
 assertStatus
 echo "Done!"
 
-#echo -n "Creating client address 217.0.0.2 on loopback ... "
-#ip addr add 217.0.0.2 dev lo
-#assertStatus
-#echo "Done!"
+echo -n "Creating client address 217.0.0.2 on tun ... "
+ip addr add 217.0.0.2/32 dev tun0
+assertStatus
+echo "Done!"
 
-#./tun-to-net tun0 &
-#ping -c 10 213.0.0.2
+echo -n "Creating client address 217.0.0.3 on tun ... "
+ip addr add 217.0.0.3/32 dev tun0
+assertStatus
+echo "Done!"
 
+echo -n "Creating client address 217.0.0.4 on tun ... "
+ip addr add 217.0.0.4/32 dev tun0
+assertStatus
+echo "Done!"
+
+echo -n "Creating interface address 217.0.0.5 on tun ... "
+ip addr add 217.0.0.5/32 dev tun0
+assertStatus
+echo "Done!"
+
+echo -n "Routing traffic to 213.0.0.0/24 to tun0 ... "
+ip route add 213.0.0.0/24 dev tun0 src 217.0.0.1
+assertStatus
+echo "Done!"
