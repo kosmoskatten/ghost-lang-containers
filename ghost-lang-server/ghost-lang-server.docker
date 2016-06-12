@@ -11,7 +11,8 @@ WORKDIR /home/app
 
 COPY start.sh /home/app
 COPY tun-plugs /home/app
+COPY ghost-server /home/app
 
 EXPOSE 8000
 
-#ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["./start.sh"]
