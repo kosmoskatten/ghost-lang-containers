@@ -55,5 +55,5 @@ ip route add 213.0.0.0/24 dev ${TUN} src 217.0.0.1
 assertStatus
 echo "Done!"
 
-./tun-plugs client ${TUN} ghost-server 8000 &
+./tun-plugs client ${TUN} ghost-server 8000 +RTS -N2 &
 ./ghost-node 80
