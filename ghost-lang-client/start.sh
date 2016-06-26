@@ -14,6 +14,7 @@ function assertStatus {
 # Anyway, isp run on 213 network and clients on the 217 network.
 
 TUN=tun0
+HOST=`hostname -i`
 
 echo -n "Creating a tun device named tun0 ... "
 ip tuntap add mode tun ${TUN}
@@ -55,5 +56,5 @@ ip route add 213.0.0.0/24 dev ${TUN} src 217.0.0.1
 assertStatus
 echo "Done!"
 
-./tun-plugs client ${TUN} ghost-server 8000 +RTS -N2 &
+./tun-plugs client ${HOST} nats://nats-server:4222 ${TUN}
 ./ghost-node 80

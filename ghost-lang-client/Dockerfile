@@ -16,6 +16,7 @@ COPY tun-plugs /home/app
 COPY ghost-node /home/app
 
 EXPOSE 80
+EXPOSE 8000
 
 VOLUME ["/ghost"]
 
