@@ -35,5 +35,5 @@ ip route add 217.0.0.0/24 dev ${TUN} src 213.0.0.1
 assertStatus
 echo "Done!"
 
-./tun-plugs server ${HOST} nats://nats-server:4222 ${TUN}
+./tun-plugs bside ${HOST} nats://nats-server:4222 ${TUN} +RTS -N2 &
 ./ghost-server 213.0.0.1 80
